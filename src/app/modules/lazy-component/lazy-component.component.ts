@@ -1,6 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, OnInit, Type, ViewContainerRef } from '@angular/core';
-import { DataService } from 'src/app/data/services/data.service';
-import { LazyCompAComponent } from './lazy-comp-a/lazy-comp-a.component';
+import { Component, ComponentFactoryResolver, Injector, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-lazy-component',
@@ -9,51 +7,49 @@ import { LazyCompAComponent } from './lazy-comp-a/lazy-comp-a.component';
 })
 export class LazyComponentComponent implements OnInit {
 
-  title = 'lazyComp';
-  lazyCom!: Promise<Type<LazyCompAComponent>>;
-  lazyInjector!: Injector;
-  data: string = '';
+  title = 'lazy-demo';
+  dialogS = false;
+
+  @ViewChild('lazy1', {read: ViewContainerRef})
+  ChildLazy1: ViewContainerRef | any;
+
+  @ViewChild('lazy2', {read: ViewContainerRef})
+  ChildLazy2: ViewContainerRef | any;
 
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private cfr: ComponentFactoryResolver,
-    private dataServise: DataService,
-    private injector: Injector
+    private cfr: ComponentFactoryResolver
   ) {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
   }
 
-  async load() {
+  async getLazy1() {
+    this.viewContainerRef.clear();
+    const {Lazy1Component} = await import('./lazy1/lazy1.component');
+    const refObject = this.viewContainerRef.createComponent(
+      this.cfr.resolveComponentFactory(Lazy1Component)
+    );
+    this.ChildLazy1 = refObject.instance;
+    this.ChildLazy1.Message = 'Hello World';
+  }
 
-    this.dataServise.data = "Fun of Heuristic";
-    /**
-     * Lazy load the component by appending the component data to the DOM
-     */
-    // this.viewContainerRef.clear();
-    // const {LazyCompAComponent} = await import('./lazy-comp-a/lazy-comp-a.component');
-    // this.viewContainerRef.createComponent(this.cfr.resolveComponentFactory(LazyCompAComponent));
-
-    /**
-     * Lazy load the component using ngComponentOutlet
-     */
-
-    if (!this.lazyCom) {
-      this.data = "Some data"
-      this.lazyInjector = Injector.create({
-        providers: [{
-          provide: 'childComp',
-          useValue: this.data
-        }],
-        parent: this.injector
-      });
-      this.lazyCom = import('./lazy-comp-a/lazy-comp-a.component')
-        .then(({ LazyCompAComponent }) => LazyCompAComponent);
-    }
+  async getLazy2() {
+    this.viewContainerRef.clear();
+    const {Lazy2Component} = await import('./lazy2/lazy2.component');
+    const refObject = this.viewContainerRef.createComponent(
+      this.cfr.resolveComponentFactory(Lazy2Component)
+    );
+    this.ChildLazy2 = refObject.instance;
+    this.ChildLazy2.Message = 'Open Dialog And Select The Option';
+    this.ChildLazy2.emitter.subscribe((isSelected: boolean) => {
+      if (isSelected) {
+        this.dialogS = isSelected;
+      } else {
+        this.dialogS = false;
+      }
+    });
   }
 
 }
