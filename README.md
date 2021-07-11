@@ -1,6 +1,11 @@
 # angular-folder-structure
 Best practices for structuring Angular app
+# Libs
+Angular Material: ng add @angular/material
+
+Angular Flex-Layout: npm i @angular/flex-layout
 #
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
