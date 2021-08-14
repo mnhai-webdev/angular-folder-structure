@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DefaultComponent } from './layouts/default/default.component';
 
 const routes: Routes = [
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
-  { path: 'article', loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule) },
-  { path: 'lazy-component', loadChildren: () => import('./modules/lazy-component/lazy-component.module').then(m => m.LazyComponentModule) },
+  {
+    path: '',
+    redirectTo: '/admin',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: DefaultComponent,
+    children: [
+      { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+      { path: 'article', loadChildren: () => import('./modules/article/article.module').then(m => m.ArticleModule) },
+      { path: 'lazy-component', loadChildren: () => import('./modules/lazy-component/lazy-component.module').then(m => m.LazyComponentModule) },
+    ]
+  }
 ];
 
 @NgModule({
