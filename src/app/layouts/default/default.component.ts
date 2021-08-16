@@ -33,4 +33,10 @@ export class DefaultComponent implements OnInit {
     }
   }
 
+  open(value: boolean): void {
+    console.log(value);
+
+    this.isExpanded = value;
+  }
+
 }

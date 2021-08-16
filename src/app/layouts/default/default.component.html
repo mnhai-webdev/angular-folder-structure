@@ -1,4 +1,17 @@
-<app-header></app-header>
-<p>default works!</p>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div fxLayout="row">
+
+  <aside class="relative bg-indigo-500 h-screen w-64 hidden sm:block shadow-xl">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
+    <app-header (openedSidebarEvent)="open($event)"></app-header>
+    <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+      <main class="w-full flex-grow p-6">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
+  </div>
+
+</div>
