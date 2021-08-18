@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { MaterialLayoutModule } from './layouts/material-layout/material-layout.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MaterialLayoutModule } from './layouts/material-layout/material-layout.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     DefaultModule,
     MaterialLayoutModule
   ],
