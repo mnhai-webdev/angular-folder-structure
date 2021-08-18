@@ -11,6 +11,7 @@
   ],
   "include": [
     "src/**/*.d.ts",
-    "src/app/shared/dialogs/*/*.component.ts"
+    "src/app/shared/dialogs/*/*.component.ts",
+    "src/app/shared/snack-bars/*/*.component.ts"
   ]
 }

@@ -10,7 +10,7 @@ export class LazyDialogService {
   constructor(private dialog: MatDialog) {
   }
 
-  async openDialog(dialogName: string, config?: MatDialogConfig): Promise<MatDialogRef<any>> {
+  async open(dialogName: string, config?: MatDialogConfig): Promise<MatDialogRef<any>> {
     const chunk = await import(`src/app/shared/dialogs/${dialogName}/${dialogName}.component`);
     const dialogComponent = Object.values(chunk)[0] as ComponentType<unknown>;
     return this.dialog.open(dialogComponent, config);
