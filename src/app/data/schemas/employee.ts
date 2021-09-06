@@ -1,5 +1,5 @@
 export class Employee {
-  empId = '';
-  empName = '';
+  id = '';
+  name = '';
   skill = '';
 }

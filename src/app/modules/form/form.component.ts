@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/data/schemas/employee';
 import { Team } from 'src/app/data/schemas/team';
@@ -11,19 +11,21 @@ import { TeamManagementService } from 'src/app/data/services/team-management.ser
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  teamForm!: FormGroup;
-  isValidFormSubmitted: Boolean = false;
-  allSkills: Observable<any[]> | undefined;
+  form: FormGroup = new FormGroup({});
+  isValidFormSubmitted = false;
+  allSkills: Observable<any[]> = new Observable<any[]>();
+
   constructor(
     private formBuilder: FormBuilder,
     private teamMngService: TeamManagementService
   ) {
   }
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.allSkills = this.teamMngService.getSkills();
 
-    this.teamForm = this.formBuilder.group({
-      teamName: ['', Validators.required],
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
       employees: this.formBuilder.array([
         this.formBuilder.group(new Employee()),
         this.formBuilder.group(new Employee())
@@ -31,55 +33,49 @@ export class FormComponent implements OnInit {
     });
 
   }
-  get teamName(): any {
-    return this.teamForm.get('teamName');
+
+  get name(): FormControl {
+    return this.form.get('name') as FormControl;
   }
+
   get employees(): FormArray {
-    return this.teamForm.get('employees') as FormArray;
+    return this.form.get('employees') as FormArray;
   }
-  addEmployee() {
-    let fg = this.formBuilder.group(new Employee());
-    this.employees.push(fg);
+
+  addEmployee(): void {
+    const employeeFormGroup = this.formBuilder.group(new Employee());
+    this.employees.push(employeeFormGroup);
   }
-  deleteEmployee(idx: number) {
+
+  deleteEmployee(idx: number): void {
     this.employees.removeAt(idx);
   }
-  onFormSubmit() {
-    this.isValidFormSubmitted = false;
-    if (this.teamForm.invalid) {
+
+  onSubmit(): void {
+    this.isValidFormSubmitted = true;
+    if (this.form.invalid) {
       return;
     }
-    this.isValidFormSubmitted = true;
-    let team: Team = this.teamForm.value;
+    const team: Team = this.form.value;
     this.teamMngService.saveTeam(team);
-    this.teamForm.reset();
+    this.form.reset();
   }
-  patchEmployeeValues() {
+
+  patchEmployeeValues(): void {
     this.employees.patchValue([
-      { empId: "111", empName: "Mohan" },
-      { empId: "112", skill: "Angular" }
+      {id: '111', name: 'Mohan'},
+      {id: '112', skill: 'Angular'}
     ]);
   }
-  setEmployeeValues() {
+
+  setEmployeeValues(): void {
     this.employees.setValue([
-      { empId: "111", empName: "Mohan", skill: "Java" },
-      { empId: "112", empName: "Krishna", skill: "Angular" }
+      {id: '111', name: 'Mohan', skill: 'Java'},
+      {id: '112', name: 'Krishna', skill: 'Angular'}
     ]);
-
-    /**
-let emp1 = new Employee();
-emp1.empId = "111";
-emp1.empName = "Mohan";
-emp1.skill = "Java";
-
-let emp2 = new Employee();
-emp2.empId = "112";
-emp2.empName = "Krishna";
-emp2.skill = "Angular";
-
-this.employees.setValue([emp1, emp2]); */
   }
-  resetTeamForm() {
-    this.teamForm.reset();
+
+  resetTeamForm(): void {
+    this.form.reset();
   }
 }

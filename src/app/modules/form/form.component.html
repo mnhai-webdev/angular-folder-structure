@@ -1,39 +1,39 @@
-<div class="m-8">
+<div class="m-8 p-8 bg-gray-200 rounded">
 
   <h3 class="text-4xl">Create New Team</h3>
 
-  <div *ngIf="isValidFormSubmitted" class="submitted"> Form submitted successfully. </div>
+  <div *ngIf="isValidFormSubmitted" class="submitted"> Form submitted successfully.</div>
   <div class="text-xl">
-    <form fxLayout="column" fxLayoutGap="16px" [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+    <form fxLayout="column" fxLayoutGap="16px" [formGroup]="form" (ngSubmit)="onSubmit()">
 
       <div fxLayout="column">
         <mat-form-field>
           <mat-label>Team Name</mat-label>
-          <input matInput formControlName="teamName">
+          <input matInput formControlName="name">
+          <mat-error class="font-thin text-lg" *ngIf="name.invalid && (name.dirty || name.touched)">
+            Team name is required.
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="teamName.invalid && !isValidFormSubmitted" class="error">
-          Team name is required.
-        </mat-error>
       </div>
 
       <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center">
         <div>Employees in Team:</div>
         <div formArrayName="employees">
-          <div *ngFor="let emp of employees.controls; let i = index" [formGroupName]="i" fxLayout="row"
+          <div *ngFor="let employee of employees.controls; let i = index" [formGroupName]="i" fxLayout="row"
             fxLayoutGap="16px">
 
             <div fxLayoutAlign="center center" class="text-blue-700 text-xl font-semibold">
-              <span>Employee: {{i + 1}}</span>
+              <span class="mb-2">Employee: {{i + 1}}</span>
             </div>
 
             <mat-form-field>
-              <mat-label>Emp Id</mat-label>
-              <input matInput formControlName="empId">
+              <mat-label>Employee Id</mat-label>
+              <input matInput formControlName="id">
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Emp Name</mat-label>
-              <input matInput formControlName="empName">
+              <mat-label>Employee Name</mat-label>
+              <input matInput formControlName="name">
             </mat-form-field>
 
             <mat-form-field>
@@ -46,14 +46,14 @@
             </mat-form-field>
 
             <div fxLayoutAlign="center center">
-              <button mat-stroked-button color="accent" type="button" (click)="deleteEmployee(i)">Delete</button>
+              <button mat-flat-button color="accent" type="button" (click)="deleteEmployee(i)">Delete</button>
             </div>
 
           </div>
         </div>
 
         <div fxLayoutAlign="start center">
-          <button button mat-stroked-button color="primary" type="button" (click)="addEmployee()">
+          <button mat-flat-button color="primary" type="button" (click)="addEmployee()">
             <span>Add More Employee</span>
           </button>
         </div>
@@ -61,10 +61,10 @@
       </div>
 
       <div fxLayout="row" fxLayoutGap="16px">
-        <button mat-stroked-button color="primary">SUBMIT</button>
-        <button mat-stroked-button color="primary" type="button" (click)="setEmployeeValues()">SET VALUE</button>
-        <button mat-stroked-button color="primary" type="button" (click)="patchEmployeeValues()">PATCH VALUE</button>
-        <button mat-stroked-button color="primary" type="button" (click)="resetTeamForm()">RESET</button>
+        <button mat-flat-button color="primary" class="bg-blue-400">SUBMIT</button>
+        <button mat-flat-button color="primary" type="button" (click)="setEmployeeValues()">SET VALUE</button>
+        <button mat-flat-button color="primary" type="button" (click)="patchEmployeeValues()">PATCH VALUE</button>
+        <button mat-flat-button color="primary" type="button" (click)="resetTeamForm()">RESET</button>
       </div>
 
     </form>
