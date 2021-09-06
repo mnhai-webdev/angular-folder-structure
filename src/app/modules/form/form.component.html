@@ -1,0 +1,72 @@
+<div class="m-8">
+
+  <h3 class="text-4xl">Create New Team</h3>
+
+  <div *ngIf="isValidFormSubmitted" class="submitted"> Form submitted successfully. </div>
+  <div class="text-xl">
+    <form fxLayout="column" fxLayoutGap="16px" [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+
+      <div fxLayout="column">
+        <mat-form-field>
+          <mat-label>Team Name</mat-label>
+          <input matInput formControlName="teamName">
+        </mat-form-field>
+        <mat-error *ngIf="teamName.invalid && !isValidFormSubmitted" class="error">
+          Team name is required.
+        </mat-error>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center">
+        <div>Employees in Team:</div>
+        <div formArrayName="employees">
+          <div *ngFor="let emp of employees.controls; let i = index" [formGroupName]="i" fxLayout="row"
+            fxLayoutGap="16px">
+
+            <div fxLayoutAlign="center center" class="text-blue-700 text-xl font-semibold">
+              <span>Employee: {{i + 1}}</span>
+            </div>
+
+            <mat-form-field>
+              <mat-label>Emp Id</mat-label>
+              <input matInput formControlName="empId">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Emp Name</mat-label>
+              <input matInput formControlName="empName">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Skill</mat-label>
+              <mat-select formControlName="skill">
+                <mat-option *ngFor="let skill of allSkills | async" [value]="skill.name">
+                  {{ skill.displayName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div fxLayoutAlign="center center">
+              <button mat-stroked-button color="accent" type="button" (click)="deleteEmployee(i)">Delete</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div fxLayoutAlign="start center">
+          <button button mat-stroked-button color="primary" type="button" (click)="addEmployee()">
+            <span>Add More Employee</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="16px">
+        <button mat-stroked-button color="primary">SUBMIT</button>
+        <button mat-stroked-button color="primary" type="button" (click)="setEmployeeValues()">SET VALUE</button>
+        <button mat-stroked-button color="primary" type="button" (click)="patchEmployeeValues()">PATCH VALUE</button>
+        <button mat-stroked-button color="primary" type="button" (click)="resetTeamForm()">RESET</button>
+      </div>
+
+    </form>
+  </div>
+</div>

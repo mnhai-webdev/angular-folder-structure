@@ -20,6 +20,8 @@ const routes: Routes = [
       { path: 'lazy-snack-bar', loadChildren: () => import('./modules/lazy-snack-bar/lazy-snack-bar.module').then(m => m.LazySnackBarModule) },
       { path: 'lazy-tab', loadChildren: () => import('./modules/lazy-tab/lazy-tab.module').then(m => m.LazyTabModule) },
       { path: 'material-ui', loadChildren: () => import('./modules/material-ui/material-ui.module').then(m => m.MaterialUiModule) },
+      { path: 'form', loadChildren: () => import('./modules/form/form.module').then(m => m.FormModule) },
+      { path: 'query-param', loadChildren: () => import('./modules/query-param/query-param.module').then(m => m.QueryParamModule) },
     ]
   },
 ];
