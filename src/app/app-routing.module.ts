@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: 'material-ui', loadChildren: () => import('./modules/material-ui/material-ui.module').then(m => m.MaterialUiModule) },
       { path: 'form', loadChildren: () => import('./modules/form/form.module').then(m => m.FormModule) },
       { path: 'query-param', loadChildren: () => import('./modules/query-param/query-param.module').then(m => m.QueryParamModule) },
+      { path: 'tailwind-css', loadChildren: () => import('./modules/tailwind-css/tailwind-css.module').then(m => m.TailwindCssModule) },
     ]
   },
 ];
