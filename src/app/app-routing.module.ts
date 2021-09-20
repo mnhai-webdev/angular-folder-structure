@@ -23,6 +23,7 @@ const routes: Routes = [
       { path: 'form', loadChildren: () => import('./modules/form/form.module').then(m => m.FormModule) },
       { path: 'query-param', loadChildren: () => import('./modules/query-param/query-param.module').then(m => m.QueryParamModule) },
       { path: 'tailwind-css', loadChildren: () => import('./modules/tailwind-css/tailwind-css.module').then(m => m.TailwindCssModule) },
+      { path: 'table-editor', loadChildren: () => import('./modules/table-editor/table-editor.module').then(m => m.TableEditorModule) },
     ]
   },
 ];
