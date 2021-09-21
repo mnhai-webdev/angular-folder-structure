@@ -1,6 +1,7 @@
-import { Employee } from "./employee";
+import { Employee } from './employee';
 
-export class Team {
-  teamName: string = '';
-  employees: Employee[] = [];
+export interface Team {
+  id: number;
+  teamName: string;
+  employees: Employee[];
 }

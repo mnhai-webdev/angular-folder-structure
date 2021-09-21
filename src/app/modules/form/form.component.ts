@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/data/schemas/employee';
 import { Team } from 'src/app/data/schemas/team';
+import { TeamService } from 'src/app/data/services/team.service';
 import { TeamManagementService } from 'src/app/data/services/team-management.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class FormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private teamMngService: TeamManagementService
+    private teamMngService: TeamManagementService,
+    private teamService: TeamService,
   ) {
   }
 
@@ -51,13 +53,14 @@ export class FormComponent implements OnInit {
     this.employees.removeAt(idx);
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     this.isValidFormSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     const team: Team = this.form.value;
-    this.teamMngService.saveTeam(team);
+    console.log(team);
+    await this.teamService.create(team).toPromise();
     this.form.reset();
   }
 

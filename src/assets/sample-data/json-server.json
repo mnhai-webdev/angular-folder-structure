@@ -36,5 +36,290 @@
       "address": "aaa",
       "id": 7
     }
+  ],
+  "teams": [
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "test 1",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "test 2",
+          "skill": "Java"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "2/TEXT",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Đào Trọng Thoại",
+          "skill": "Angular"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "name": "sss",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "name": "2/TEXT",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        },
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        }
+      ],
+      "id": 7
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "name": "A1",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "name": "2/TEXT",
+      "employees": [
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        },
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        }
+      ],
+      "id": 10
+    },
+    {
+      "name": "aaa",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        },
+        {
+          "id": "",
+          "name": "",
+          "skill": ""
+        }
+      ],
+      "id": 12
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 13
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 14
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 15
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 16
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 17
+    },
+    {
+      "name": "Mai Ngọc Hải",
+      "employees": [
+        {
+          "id": "111",
+          "name": "Mohan",
+          "skill": "Java"
+        },
+        {
+          "id": "112",
+          "name": "Krishna",
+          "skill": "Angular"
+        }
+      ],
+      "id": 18
+    }
   ]
 }

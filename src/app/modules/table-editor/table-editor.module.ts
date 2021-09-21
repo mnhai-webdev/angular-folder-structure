@@ -9,7 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { DataModule } from '../../data/data.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { StudentService } from 'src/app/data/services/student.service';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import { DataModule } from '../../data/data.module';
   imports: [
     CommonModule,
     TableEditorRoutingModule,
+    HttpClientModule,
     MatPaginatorModule,
     MatTableModule,
     MatInputModule,
     SharedModule,
     MatButtonModule,
     DataModule
-  ]
+  ],
+  providers: [StudentService],
 })
 export class TableEditorModule { }
