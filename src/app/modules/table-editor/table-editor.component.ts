@@ -42,9 +42,11 @@ export class TableEditorComponent implements OnInit {
     });
   }
 
-  editItem(element: Student): void {
-    // this.studentData = this.cloneDeep(element);
-    // this.isEditMode = true;
+  editStudent(element: Student): void {
+    this.studentService.update(element.id, element).subscribe((response: any) => {
+      this.dataSource.data = response;
+    });
+    this.isEditMode = true;
   }
 
   cancelEdit(): void {
@@ -52,8 +54,8 @@ export class TableEditorComponent implements OnInit {
     this.studentForm.resetForm();
   }
 
-  deleteItem(id: number): void {
-    this.studentService.deleteItem(id).subscribe((response: any) => {
+  deleteStudent(id: number): void {
+    this.studentService.delete(id).subscribe((response: any) => {
 
       // Approach #1 to update datatable data on local itself without fetching new data from server
       // @ts-ignore
@@ -64,12 +66,12 @@ export class TableEditorComponent implements OnInit {
       console.log(this.dataSource.data);
 
       // Approach #2 to re-call getAllStudents() to fetch updated data
-      // this.getAllStudents()
+      this.getAllStudents();
     });
   }
 
   addStudent(): void {
-    this.studentService.createItem(this.studentData).subscribe((response: any) => {
+    this.studentService.create(this.studentData).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map(o => {
         return o;
@@ -78,7 +80,7 @@ export class TableEditorComponent implements OnInit {
   }
 
   updateStudent(): void {
-    this.studentService.updateItem(this.studentData.id, this.studentData).subscribe((response: any) => {
+    this.studentService.update(this.studentData.id, this.studentData).subscribe((response: any) => {
 
       // Approach #1 to update datatable data on local itself without fetching new data from server
       // @ts-ignore
