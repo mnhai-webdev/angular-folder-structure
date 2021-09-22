@@ -7,8 +7,9 @@ const routes: Routes = [
     path: '',
     component: MaterialUiComponent,
     children: [
-      { path: 'date-picker', loadChildren: () => import('./date-picker/date-picker.module').then(m => m.DatePickerModule) },
-      { path: 'chip', loadChildren: () => import('./chip/chip.module').then(m => m.ChipModule) },
+      {path: 'date-picker', loadChildren: () => import('./date-picker/date-picker.module').then(m => m.DatePickerModule)},
+      {path: 'chip', loadChildren: () => import('./chip/chip.module').then(m => m.ChipModule)},
+      {path: 'auto-complete', loadChildren: () => import('./auto-complete/auto-complete.module').then(m => m.AutoCompleteModule)},
     ]
   }
 ];
@@ -17,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MaterialUiRoutingModule { }
+export class MaterialUiRoutingModule {
+}

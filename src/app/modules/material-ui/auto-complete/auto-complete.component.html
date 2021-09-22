@@ -1,0 +1,27 @@
+<form [formGroup]="form" class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Assignee</mat-label>
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Assignee"
+           matInput
+           formControlName="assignee"
+           [matAutocomplete]="auto" #input
+           (keyup)="onAutocompleteKeyUp(input.value, options)"
+           required/>
+    <mat-error *ngIf="form.controls.assignee.errors?.matchRequired">
+      Please select a character from the list.
+    </mat-error>
+    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="false" [displayWith]="displayFn" panelWidth="32vw"
+                      (opened)="onOpen()" (closed)="onClose()" (optionSelected)="onSelect()"
+                      (optionActivated)="onActive()" >
+      <mat-option class="text-blue-600"
+                  *ngFor="let option of filteredOptions | async; let i = index; trackBy: traceByFn" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</form>
+
+<button type="button" (click)="onSubmit()">Submit</button>

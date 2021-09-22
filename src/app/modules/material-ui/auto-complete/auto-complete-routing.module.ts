@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChipComponent } from './chip.component';
+import { AutoCompleteComponent } from './auto-complete.component';
 
 const routes: Routes = [
   {
-    path: '', component: ChipComponent
+    path: '', component: AutoCompleteComponent
   }
 ];
 
@@ -12,5 +12,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ChipRoutingModule {
+export class AutoCompleteRoutingModule {
 }
