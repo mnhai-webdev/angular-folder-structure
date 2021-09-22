@@ -13,6 +13,12 @@ import { UserService } from 'src/app/data/services/user.service';
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent implements OnInit, AfterViewInit {
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+  ) {
+  }
   @ViewChild('auto') autoComplete!: MatAutocomplete;
   form!: FormGroup;
   private filteredOptionsSubject = new BehaviorSubject<User[]>([]);
@@ -23,12 +29,6 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit {
     {id: 3, name: 'Igor'}
   ];
   filteredOptions: Observable<User[]> | undefined;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-  ) {
-  }
 
   ngAfterViewInit(): void {
     console.log(this.autoComplete.isOpen);
@@ -93,5 +93,4 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit {
         ? options
         : options.filter(r => r.name.toLocaleLowerCase().includes(lowerSearchText)));
   }
-
 }

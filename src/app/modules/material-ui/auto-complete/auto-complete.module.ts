@@ -8,7 +8,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../../data/services/user.service';
-
+import { MyAutoCompleteModule } from '../../../shared/components/my-auto-complete/my-auto-complete.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,11 @@ import { UserService } from '../../../data/services/user.service';
     HttpClientModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MyAutoCompleteModule,
+    SharedModule,
   ],
   providers: [UserService]
 })
-export class AutoCompleteModule { }
+export class AutoCompleteModule {
+}
