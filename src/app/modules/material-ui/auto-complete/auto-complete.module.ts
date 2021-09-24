@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../../data/services/user.service';
 import { MyAutoCompleteModule } from '../../../shared/components/my-auto-complete/my-auto-complete.module';
 import { SharedModule } from '../../../shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedModule } from '../../../shared/shared.module';
     ReactiveFormsModule,
     MyAutoCompleteModule,
     SharedModule,
+    FlexLayoutModule,
   ],
   providers: [UserService]
 })

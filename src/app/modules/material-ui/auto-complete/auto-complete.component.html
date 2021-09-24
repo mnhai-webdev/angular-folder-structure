@@ -15,7 +15,12 @@
     <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="false" [displayWith]="displayFn" panelWidth="32vw"
                       (opened)="onOpen()" (closed)="onClose()" (optionSelected)="onSelect()"
                       (optionActivated)="onActive()" (scroll)="onScroll()">
-      <mat-option *ngIf="isLoading" class="text-blue-600">Loading...</mat-option>
+      <mat-option *ngIf="isLoading" class="text-blue-600">
+        <div fxLayout="row">
+          <div>Loading</div>
+          <div class="animate-bounce">...</div>
+        </div>
+      </mat-option>
       <ng-container *ngIf="!isLoading">
         <mat-option class="text-blue-600"
                     *ngFor="let option of filteredUsers | async; let i = index; trackBy: traceByFn" [value]="option">
