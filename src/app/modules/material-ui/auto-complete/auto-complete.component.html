@@ -7,18 +7,21 @@
            matInput
            formControlName="assignee"
            [matAutocomplete]="auto" #input
-           (keyup)="onAutocompleteKeyUp(input.value, options)"
+           (keyup)="onAutocompleteKeyUp(input.value, users)"
            required/>
     <mat-error *ngIf="form.controls.assignee.errors?.matchRequired">
       Please select a character from the list.
     </mat-error>
     <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="false" [displayWith]="displayFn" panelWidth="32vw"
                       (opened)="onOpen()" (closed)="onClose()" (optionSelected)="onSelect()"
-                      (optionActivated)="onActive()">
-      <mat-option class="text-blue-600"
-                  *ngFor="let option of filteredOptions | async; let i = index; trackBy: traceByFn" [value]="option">
-        {{option.name}}
-      </mat-option>
+                      (optionActivated)="onActive()" (scroll)="onScroll()">
+      <mat-option *ngIf="isLoading" class="text-blue-600">Loading...</mat-option>
+      <ng-container *ngIf="!isLoading">
+        <mat-option class="text-blue-600"
+                    *ngFor="let option of filteredUsers | async; let i = index; trackBy: traceByFn" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </ng-container>
     </mat-autocomplete>
   </mat-form-field>
 

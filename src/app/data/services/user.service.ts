@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { User } from '../schemas/user';
@@ -48,9 +48,19 @@ export class UserService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getList(): Observable<User[]> {
+  getList(keyword?: string, page?: number, size?: number): Observable<User[]> {
+    let params = new HttpParams();
+    if (keyword) {
+      params = params.set('name', keyword);
+    }
+    if (page) {
+      params = params.set('_page', page);
+    }
+    if (size) {
+      params = params.set('_limit', size);
+    }
     return this.http
-      .get<User>(this.basePath)
+      .get<User>(this.basePath, {params})
       .pipe(retry(2), catchError(this.handleError));
   }
 

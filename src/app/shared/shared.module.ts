@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FilterPipe } from './pipe/filter.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { OptionsScrollDirective } from './directives/options-scroll.directive';
 
 @NgModule({
   imports: [
@@ -11,10 +12,12 @@ import { FilterPipe } from './pipe/filter.pipe';
   exports: [
     CommonModule,
     ReactiveFormsModule,
-    FilterPipe
+    FilterPipe,
+    OptionsScrollDirective
   ],
   declarations: [
-    FilterPipe
+    FilterPipe,
+    OptionsScrollDirective
   ]
 })
 export class SharedModule {

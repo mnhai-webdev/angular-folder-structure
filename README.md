@@ -10,6 +10,14 @@ Run `npm i @angular/flex-layout`.
 
 Run `ng add @ngneat/tailwind`.
 
+## Install Angular Unsubscribe For Pros
+
+Run `npm i ngx-take-until-destroy`.
+
+## Install TakeWhileInclusive
+
+Run `npm i rxjs-take-while-inclusive`.
+
 ## Tailwind CSS Testing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
