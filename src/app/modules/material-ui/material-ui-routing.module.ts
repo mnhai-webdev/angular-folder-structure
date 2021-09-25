@@ -12,6 +12,7 @@ const routes: Routes = [
       {path: 'auto-complete', loadChildren: () => import('./auto-complete/auto-complete.module').then(m => m.AutoCompleteModule)},
       {path: 'badge', loadChildren: () => import('./badge/badge.module').then(m => m.BadgeModule)},
       {path: 'button', loadChildren: () => import('./button/button.module').then(m => m.ButtonModule)},
+      {path: 'button-toggle', loadChildren: () => import('./button-toggle/button-toggle.module').then(m => m.ButtonToggleModule)},
     ]
   }
 ];

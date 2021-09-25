@@ -1,0 +1,11 @@
+<mat-button-toggle-group multiple name="haimn" vertical (change)="onChange($event)">
+  <mat-button-toggle value="1">
+    <mat-icon>home</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="2">
+    <mat-icon>home</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="3" #buttonToggle="matButtonToggle">
+    <mat-icon>home</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>
