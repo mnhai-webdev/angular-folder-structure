@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Student } from '../schemas/student';
@@ -48,7 +48,29 @@ export class StudentService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getList(): Observable<Student> {
+  getList(keyword?: string, page?: number, size?: number, sort?: string, order?: string): Observable<Student[]> {
+    let params = new HttpParams();
+    if (keyword) {
+      params = params.set('q', keyword);
+    }
+    if (page) {
+      params = params.set('_page', page);
+    }
+    if (size) {
+      params = params.set('_limit', size);
+    }
+    if (sort) {
+      params = params.set('_sort', sort);
+    }
+    if (order) {
+      params = params.set('_order', order);
+    }
+    return this.http
+      .get<Student>(this.basePath, {params})
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getAll(): Observable<Student[]> {
     return this.http
       .get<Student>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
