@@ -1,7 +1,7 @@
 <mat-form-field class="example-chip-list" appearance="fill">
 
   <mat-label>Favorite Fruits</mat-label>
-  <mat-chip-list ariaOrientation="vertical" #chipList aria-label="Fruit selection">
+  <mat-chip-list aria-orientation="vertical" #chipList aria-label="Fruit selection">
     <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)">
       {{fruit}}
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>

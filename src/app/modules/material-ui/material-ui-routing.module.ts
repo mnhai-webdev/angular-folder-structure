@@ -15,6 +15,7 @@ const routes: Routes = [
       {path: 'button-toggle', loadChildren: () => import('./button-toggle/button-toggle.module').then(m => m.ButtonToggleModule)},
       {path: 'card', loadChildren: () => import('./card/card.module').then(m => m.CardModule)},
       {path: 'checkbox', loadChildren: () => import('./checkbox/checkbox.module').then(m => m.CheckboxModule)},
+      {path: 'divider', loadChildren: () => import('./divider/divider.module').then(m => m.DividerModule)},
     ]
   }
 ];
