@@ -13,6 +13,7 @@ const routes: Routes = [
       {path: 'badge', loadChildren: () => import('./badge/badge.module').then(m => m.BadgeModule)},
       {path: 'button', loadChildren: () => import('./button/button.module').then(m => m.ButtonModule)},
       {path: 'button-toggle', loadChildren: () => import('./button-toggle/button-toggle.module').then(m => m.ButtonToggleModule)},
+      {path: 'card', loadChildren: () => import('./card/card.module').then(m => m.CardModule)},
     ]
   }
 ];
