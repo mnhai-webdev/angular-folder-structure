@@ -30,7 +30,10 @@ const routes: Routes = [
       {path: 'query-param', loadChildren: () => import('./modules/query-param/query-param.module').then(m => m.QueryParamModule)},
       {path: 'tailwind-css', loadChildren: () => import('./modules/tailwind-css/tailwind-css.module').then(m => m.TailwindCssModule)},
       {path: 'table-editor', loadChildren: () => import('./modules/table-editor/table-editor.module').then(m => m.TableEditorModule)},
-      { path: 'shared-auto-complete', loadChildren: () => import('./modules/shared-auto-complete/shared-auto-complete.module').then(m => m.SharedAutoCompleteModule) },
+      {
+        path: 'shared-auto-complete',
+        loadChildren: () => import('./modules/shared-auto-complete/shared-auto-complete.module').then(m => m.SharedAutoCompleteModule)
+      },
     ]
   },
 ];

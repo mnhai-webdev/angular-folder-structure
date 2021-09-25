@@ -1,0 +1,9 @@
+<div class="w-32 bg-gray-300 rounded-full p-2 object-center text-gray-900 font-extrabold" [matBadge]="badgeCounter"
+     [matBadgeHidden]="hideMatBadge" matBadgePosition="above after" matBadgeSize="large"
+     matBadgeColor="accent">badge works!
+</div>
+<mat-card>
+  <button mat-raised-button (click)="incrementCount()">+</button>
+  <button mat-raised-button (click)="decreaseCount()">-</button>
+  <button mat-raised-button (click)="resetCount()">reset</button>
+</mat-card>
